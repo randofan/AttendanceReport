@@ -1,1 +1,3 @@
 credentials.json
+/tokens
+target\classes\credentials.json
