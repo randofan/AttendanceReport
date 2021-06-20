@@ -2,6 +2,7 @@
 package com.example;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -140,7 +141,7 @@ public class App {
         }
         return tally;
     }
-    
+
     /**
      * Makes a HashSet of all the people who've attend >= 3 meetings
      * 
@@ -159,8 +160,13 @@ public class App {
 
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         HashSet<String> hs = count(getTally());
+
+        // Write names to new .txt file
+        java.io.File f = new java.io.File("Attendance.txt");
+        FileWriter fw = new FileWriter(f);
         for (String s : hs) {
-            System.out.println(s);
+            fw.write(s + "\n");
         }
+        fw.close();
     }
 }
