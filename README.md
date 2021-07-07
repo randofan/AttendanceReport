@@ -4,7 +4,7 @@ Each semester, Chinese Club must determine which club members have attended the 
 Built with Maven, this Java project uses both the Google Drive and Google Sheets API to first get all the file IDs of the Google Sheets from the folder and then individually go into each sheets file and parse the member's names. From there, it stores each member in a HashMap, with their values corresponding to how many meetings they've attended. Afterwards, it tallies which members have attended the minimum requirement and prints their names into a text file.
 
 ### Usage
-Running the .jar file will create a new text file named "Attendance.txt" in the parent directory containing a list of all the members who've attended at least three meetings.
+Run the .jar file. It will first ask you to sign into the Chinese Club Gmail account and request authorization to access the Google Drive. Once authorized, the program will create a new text file named "Attendance.txt" in the parent directory containing a list of all the members who've attended at least three meetings. In addition, a tokens folders will also be created; this will allow you to reuse this program without needing to re-log into the Chinese Club Gmail account.
 
 ### Cloning Repository
 To run this project locally, you will need to:
