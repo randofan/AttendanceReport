@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -86,8 +89,7 @@ public class App {
     private static List<File> getFiles (NetHttpTransport HTTP_TRANSPORT) throws GeneralSecurityException, IOException {
         // Gets a list of all the attendance spreadsheets in the Attendance Spreadsheets folder.
         FileList result = getDriveService(HTTP_TRANSPORT).files().list()
-            // TODO figure out how to add multiple Queries for date last modified
-            .setQ("parents in '1R0lPeWWN5QbxaBoY_zqvBI_92GdHljfg'")
+            .setQ("parents in '10tDJRo_FL6RnPsiLHJe4OmQ-1BYZf1mg' and starred = true")
             .setSpaces("drive")
             .setFields("nextPageToken, files(id, name)")
             .execute();
@@ -159,6 +161,9 @@ public class App {
     }
 
     public static void main(String[] args) throws IOException, GeneralSecurityException {
+
+        JOptionPane.showMessageDialog(null, "<html>This application reports the students who have attended at least three Chinese Club meetings within the selected attendance spreadsheets.<br/>Within the Google Drive Folder, please <i>star</i> the Sheets you wish to include in this tally.</html>", "Welcome", JOptionPane.INFORMATION_MESSAGE);
+
         HashSet<String> hs = count(getTally());
 
         // Write names to new .txt file
@@ -168,5 +173,7 @@ public class App {
             fw.write(s + "\n");
         }
         fw.close();
+
+        JOptionPane.showMessageDialog(null, "A .txt file has been created in your parent folder", "Finished", JOptionPane.INFORMATION_MESSAGE);
     }
 }
