@@ -1,4 +1,4 @@
-# AttendanceTally
+# AttendanceReport
 Each semester, Chinese Club must determine which club members have attended the three meetings required to maintain member status. Each meeting's attendance is tracked in Google Sheets located in a Google Drive folder.
 
 Built with Maven, this Java project uses both the Google Drive and Google Sheets API to first get all the file IDs of the Google Sheets from the folder and then individually go into each sheets file and parse the member's names. From there, it stores each member in a HashMap, with their values corresponding to how many meetings they've attended. Afterwards, it tallies which members have attended the minimum requirement and prints their names into a text file.
